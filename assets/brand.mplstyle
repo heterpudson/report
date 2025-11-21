@@ -1,0 +1,34 @@
+# INTELLIGENT INTERNET - INSTITUTIONAL CHART STYLE
+
+# Backgrounds (Transparent for seamless integration on white paper)
+figure.facecolor: none
+axes.facecolor: none
+savefig.transparent: True
+
+# Text & Labels (Dark Charcoal for readability on white)
+text.color: 191e1b
+axes.labelcolor: 56696d
+xtick.color: 56696d
+ytick.color: 56696d
+axes.titlecolor: 191e1b
+axes.titlesize: 12
+axes.titleweight: bold
+
+# Fonts
+font.family: sans-serif
+font.sans-serif: Nunito Sans, Montserrat, Arial
+
+# Brand Palette Cycle: Sky Blue, Violet, Slate, Pewter
+# Note: We removed the purple clash, leaning into the cool blues/greys
+axes.prop_cycle: cycler('color', ['bae9f4', '632af5', '56696d', '919eae'])
+
+# Grid & Spines (Minimalist)
+axes.grid: True
+grid.color: d5dce0
+grid.linestyle: --
+grid.linewidth: 0.5
+axes.spines.top: False
+axes.spines.right: False
+axes.spines.left: True
+axes.spines.bottom: True
+axes.edgecolor: 56696d
