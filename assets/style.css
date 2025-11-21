@@ -1,0 +1,176 @@
+/* INTELLIGENT INTERNET: INSTITUTIONAL HYBRID THEME */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Nunito+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --charcoal: #191e1b; 
+    --slate: #56696d;    
+    --sky-blue: #bae9f4; 
+    --violet: #632af5;
+    --mist: #f4f7f8;     
+    --white: #ffffff;
+}
+
+@page {
+    size: A4;
+    margin: 0; /* Zero margin allows full-bleed layouts; content has padding */
+    background-color: var(--white);
+    
+    /* Background Mesh (Subtle footer branding) */
+    background-image: url('background_mesh.png');
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @bottom-right {
+        content: counter(page);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 9pt;
+        color: var(--slate);
+        margin-bottom: 1cm;
+        margin-right: 1cm;
+    }
+    @bottom-left {
+        content: "Intelligent Internet | 2025";
+        font-family: 'Montserrat', sans-serif;
+        font-size: 8pt;
+        color: var(--slate);
+        margin-bottom: 1cm;
+        margin-left: 1cm;
+    }
+}
+
+body {
+    background-color: var(--white);
+    color: var(--charcoal);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 10pt;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--charcoal); break-after: avoid; }
+
+h1 { font-size: 24pt; font-weight: 700; line-height: 1.1; margin-bottom: 15px; color: var(--charcoal); }
+h2 { font-size: 16pt; font-weight: 600; color: var(--slate); border-bottom: 3px solid var(--sky-blue); padding-bottom: 8px; width: 100%; margin-top: 0;}
+h3 { font-size: 12pt; font-weight: 700; margin-top: 20px; color: var(--violet); }
+
+p { margin-bottom: 15px; text-align: justify; }
+a { color: var(--violet); text-decoration: none; }
+blockquote { border-left: 3px solid var(--sky-blue); padding-left: 15px; color: var(--slate); font-style: italic; }
+
+/* --- DYNAMIC LAYOUT MODES --- */
+
+/* 1. Standard Columns (Dense Information) */
+.layout-standard {
+    padding: 2cm;
+    column-count: 2;
+    column-gap: 1cm;
+    column-fill: auto;
+    text-align: justify;
+    orphans: 2; widows: 2;
+    -webkit-hyphens: auto; hyphens: auto;
+}
+
+/* 2. Split Layout (High Impact Intro) */
+.layout-split {
+    display: flex;
+    width: 100%;
+    min-height: 25cm; /* Takes up most of a page */
+    break-after: page;
+}
+.split-left {
+    width: 40%;
+    background-color: var(--charcoal);
+    color: var(--white);
+    padding: 2cm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.split-left h1, .split-left h2, .split-left p { color: var(--white); border: none; }
+.split-right {
+    width: 60%;
+    padding: 2cm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--mist);
+}
+
+/* 3. Sidebar Layout (Technical/Academic) */
+.layout-sidebar {
+    padding: 2cm;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 1cm;
+    break-inside: auto;
+}
+.sidebar-col {
+    border-right: 1px solid var(--sky-blue);
+    padding-right: 15px;
+    font-size: 9pt;
+    color: var(--slate);
+    font-style: italic;
+}
+.main-col { padding-left: 10px; text-align: justify; }
+
+/* 4. Hero Data Layout */
+.layout-hero {
+    padding: 2cm;
+    background-color: var(--white);
+    break-inside: avoid;
+}
+.hero-container {
+    background-color: var(--mist);
+    padding: 40px;
+    border-radius: 8px;
+    border-top: 4px solid var(--violet);
+    text-align: center;
+}
+
+/* --- COMPONENTS --- */
+
+/* Chart Styling */
+.chart-wrapper {
+    width: 100%;
+    margin: 25px 0;
+    break-inside: avoid;
+}
+.chart-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--slate);
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 9pt; break-inside: avoid; }
+th { text-align: left; border-bottom: 2px solid var(--charcoal); padding: 8px; background-color: var(--mist); }
+td { border-bottom: 1px solid #ddd; padding: 8px; }
+tr:nth-child(even) { background-color: #fafafa; }
+
+/* Cover Page */
+.cover-page {
+    height: 297mm;
+    width: 100%;
+    position: relative;
+    background: radial-gradient(circle at 70% 30%, #2a3230 0%, #191e1b 80%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    break-after: page;
+}
+.cover-title { font-family: 'Montserrat'; font-size: 38pt; font-weight: 700; margin-bottom: 10px; }
+.cover-subtitle { font-family: 'Montserrat'; font-size: 18pt; color: var(--sky-blue); margin-bottom: 40px; }
+
+/* Footnotes */
+.footnote { font-size: 8pt; color: var(--slate); border-top: 1px solid #ddd; margin-top: 20px; padding-top: 5px; }
