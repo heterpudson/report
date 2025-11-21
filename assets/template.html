@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        {% if logo_path %}
+        <img src="{{ logo_path }}" style="width: 160px; margin-bottom: 40px;">
+        {% else %}
+        <!-- Fallback Logo -->
+        <div style="font-family: Montserrat; font-size: 60px; color: #bae9f4; border: 4px solid #bae9f4; padding: 30px; margin-bottom: 40px; border-radius: 50%;">II</div>
+        {% endif %}
+        
+        <div class="cover-title">{{ title }}</div>
+        <div class="cover-subtitle">{{ subtitle }}</div>
+        <div style="margin-top: 80px; font-family: Montserrat; color: #919eae;">{{ date }}</div>
+    </div>
+
+    <!-- DYNAMIC SECTIONS INJECTED HERE -->
+    {{ dynamic_content | safe }}
+
+</body>
+</html>
