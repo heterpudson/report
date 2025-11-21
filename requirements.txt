@@ -1,0 +1,9 @@
+streamlit
+openai
+weasyprint
+matplotlib
+jinja2
+markdown
+pandas
+pyphen
+duckduckgo-search
