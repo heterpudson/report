@@ -62,18 +62,44 @@ def analyze_layout_and_data(text):
     Split the raw text into logical sections and assign a layout mode.
     
     Layout Modes:
-    1. "split": Use for Introductions. (High impact, large text).
-    2. "sidebar": Use for technical sections with definitions. Main text goes in 'main_text', definitions/stats in 'side_text'.
-    3. "standard": Use for standard body text (2-column dense flow).
-    4. "hero": Use for sections focused on a major chart.
+    1. "chapter": Use for the start of a new major section/chapter. Title is the Chapter Name.
+    2. "front_matter": Use for Foreword, Preface, Introduction.
+    3. "executive_summary": Use for Executive Summary (prominent front matter).
+    4. "abbreviations": Use for List of Abbreviations or Acronyms.
+    5. "acknowledgements": Use for Acknowledgements section.
+    6. "split": Use for high-impact intro pages (Title + Text + Quote).
+    7. "sidebar": Use for technical sections needing a sidebar for definitions/context.
+    8. "standard": Use for standard dense content (2-column).
+    9. "hero": Use for data-heavy sections (Title + Chart + Key Metrics).
+    10. "box": Use for case studies or callouts (Title + Content).
+    11. "references": Use for Bibliography/References.
+    12. "annex": Use for Appendices/Annexes./appendices.
     
-    Data Extraction:
-    If a section contains numbers suitable for a chart, extract them into 'chart': {'title': '...', 'data': {'Label': Value}}.
+    Content Features:
+    - If a section has a key insight, extract it as a 'pull_quote'.
+    - If a section would benefit from an image/illustration, add 'image':
+      {
+        'caption': 'Figure I.1: Description',
+        'generate': true,
+        'prompt': 'Professional illustration showing...'
+      }
+      Use generate:true for AI-generated illustrations when no specific image exists.
+    - If a section contains numbers suitable for a chart, extract them into 'chart': 
+      {
+        'title': '...', 
+        'type': 'bar'|'line'|'scatter'|'horizontal_bar'|'stacked_bar',
+        'data': {'Label': Value} OR [{'name': 'Series1', 'values': [...], 'labels': [...]}],
+        'x_label': '...',
+        'y_label': '...'
+      }
+      Use 'line' for time-series data, 'bar' for categorical comparisons, 'horizontal_bar' for ranked lists,
+      'scatter' for correlation data, 'stacked_bar' for part-to-whole comparisons.
 
     Return JSON: 
     {
       "sections": [
-        { "layout": "standard", "main_text": "...", "chart": {...} },
+        { "layout": "chapter", "title": "Chapter 1: The Digital Divide" },
+        { "layout": "standard", "main_text": "...", "pull_quote": "Key insight...", "chart": {...} },
         { "layout": "sidebar", "main_text": "...", "side_text": "..." }
       ]
     }
